@@ -4,14 +4,17 @@ variable "aws_account_email" {}
 
 variable "aws_account_name" {}
 
+variable "keybase_user" {}
+
 //--------------------------------------------------------------------
 // Modules
 module "accounts" {
   source  = "app.terraform.io/Darnold-AWS-AccountManagement/accounts/aws"
-  version = "2.2.2"
+  version = "3.0.6"
 
   aws_account_email = "${var.aws_account_email}"
   aws_account_name  = "${var.aws_account_name}"
+  keybase_user      = "${var.keybase_user}"
 }
 
 output "role_name" {

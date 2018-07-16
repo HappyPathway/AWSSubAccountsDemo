@@ -3,6 +3,7 @@
 export ORG=Darnold-AWS-AccountManagement
 export WORKSPACE=AWSSubAccounts
 export HASHI_USER=darnold
+export KEYBASE_USER=darnoldhashic
 
 function push_vault_env {
    tfe pushvars -name ${ORG}/${WORKSPACE} \
@@ -23,7 +24,8 @@ function set_vars {
     export AWS_ACCOUNT_NAME=${HASHI_USER}-hashidemos-${epoch}
     tfe pushvars -name ${TFE_ORG}/${WORKSPACE} \
     -var "aws_account_email=${AWS_ACCOUNT_EMAIL}" \
-    -var "aws_account_name=${AWS_ACCOUNT_NAME}"
+    -var "aws_account_name=${AWS_ACCOUNT_NAME}" \
+    -var "keybase_user=${KEYBASE_USER}"
 }
 
 function main {
