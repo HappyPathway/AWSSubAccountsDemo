@@ -11,6 +11,8 @@ function push_vault_env {
 function set_vars {
     tfe pushvars -name ${TFE_ORG}/${WORKSPACE} \
     -var "aws_account_name=${AWS_ACCOUNT_NAME}" \
+    -svar "vault_addr=${VAULT_ADDR}" \
+    -svar "vault_token=${VAULT_TOKEN}" \
     -var "service_name=WebApp"
 }
 
