@@ -29,6 +29,7 @@ function set_vars {
 }
 
 function main {
+    terraform workspace new aws_accounts || terraform workspace select aws_accounts 
     terraform init
     terraform apply -var repo=${WORKSPACE} -var description="AWS Sub Accounts" -var private=true -auto-approve
     tfe workspace new -tfe-workspace ${WORKSPACE} -vcs-id HappyPathway/${WORKSPACE}
