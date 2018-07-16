@@ -7,8 +7,8 @@ variable "aws_account_name" {}
 //--------------------------------------------------------------------
 // Modules
 module "accounts" {
-  source  = "app.terraform.io/Darnold-AWS-Global/accounts/aws"
-  version = "1.0.0"
+  source  = "app.terraform.io/Darnold-AWS-AccountManagement/accounts/aws"
+  version = "2.2.2"
 
   aws_account_email = "${var.aws_account_email}"
   aws_account_name  = "${var.aws_account_name}"

@@ -5,7 +5,7 @@ variable "description" {}
 variable "private" {}
 
 variable "enable_github" {
-  default     = "false"
+  default     = "true"
   type        = "string"
   description = "Only enable if using a Github repo"
 }

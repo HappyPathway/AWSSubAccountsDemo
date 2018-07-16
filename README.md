@@ -1,10 +1,8 @@
 # AWS Account Management through Terraform and Vault AWS/AppRole
+
+## Create TFE Organization
 First we're gonna go through creating a brand new Terraform Enterprise Organization. In this organization, we will manage all of our AWS Accounts and any other global infrastructure. All the rest of our infrastructure will be delegated to our individual AWS Accounts.
 ![TFE Org Create](./images/tfe_org_create.png)
-
-## Repository Creation for AWSSubAccounts
-We're going to manage all of our sub-accounts from one GitHub repository. We do not want to ever store our Terraform State files in GitHub as there could be unintended secrets that are checked in as well. Since we're going to be mostly managing Terraform code from this repository, we will go ahead and specify the Terraform template for our .gitignore file.
-![GitHub Repo Create](./images/github_repo_create.png)
 
 ## Connect TFE Organization to GitHub
 We're going to create a new GitHub Oauth App. 
@@ -12,6 +10,9 @@ We're going to create a new GitHub Oauth App.
 
 ## Create Organization API Token
 We'll need to create an organization api token so that we can automate some of the setup of workspaces using the tfe command line tool. Make sure to add to ~/.tfe/Darnold-AWS-Global
+
+## Add terraform-aws-accounts module to module registry
+
 
 ## Workspace Creation for AWS SubAccounts
 We're going to manage all of our sub-accounts from one workspace. In this workspace we will need to upload our Root Account IAM Credentials. *This should not be confused with root user credentials. Here we are only providing credentials that are tied to IAM accounts that are able to create sub-accounts. 
