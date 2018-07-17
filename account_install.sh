@@ -1,6 +1,6 @@
 
 #!/bin/bash
-export ORG=Darnold-AWS-AccountManagement
+export ORG=Darnold-AWS-SubAccounts
 export WORKSPACE=AWSSubAccounts
 export HASHI_USER=darnold
 export KEYBASE_USER=darnoldhashic

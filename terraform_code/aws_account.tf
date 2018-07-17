@@ -9,7 +9,7 @@ variable "keybase_user" {}
 //--------------------------------------------------------------------
 // Modules
 module "accounts" {
-  source  = "app.terraform.io/Darnold-AWS-AccountManagement/accounts/aws"
+  source  = "app.terraform.io/Darnold-AWS-SubAccounts/accounts/aws"
   version = "3.0.6"
 
   aws_account_email = "${var.aws_account_email}"
@@ -43,4 +43,12 @@ output "vault_ec2_admin_policy" {
 
 output "vault_ec2_ro_policy" {
   value = "aws-${var.aws_account_name}-ro"
+}
+
+output "console_user" {
+  value = "${module.accounts.console_user}"
+}
+
+output "console_password" {
+  value = "${module.accounts.console_password}"
 }

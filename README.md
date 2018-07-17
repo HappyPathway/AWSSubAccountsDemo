@@ -70,3 +70,10 @@ It seems that Terraform Enterprise does not install proper webhooks on Repos unt
 
 ### Add Terraform Config to new branch in GitHub repo.
 In order to get a feel for the Terraform Enterprise Team Workflow, we're going to add our terraform configurqtion template to a new main.tf in a new branch. 
+
+### Run TFE Apply
+This will send several outputs to the TFE UI. One of these outputs is the AWS Console Password. You can decrypt the password by running the following command and pasting the password in the terminal.
+
+```bash
+cat - | base64 --decode | keybase pgp decrypt
+```
