@@ -1,9 +1,10 @@
 
 #!/bin/bash
-export ORG=Darnold-AWS-SubAccounts
-export WORKSPACE=AWSSubAccounts
+export ORG=SecurityInDepth-Darnold
+export WORKSPACE=Vault_AWSAccounts
 export HASHI_USER=darnold
 export KEYBASE_USER=darnoldhashic
+
 
 function push_vault_env {
    tfe pushvars -name ${ORG}/${WORKSPACE} \
@@ -21,7 +22,7 @@ function push_aws {
 function set_vars {
     epoch=$(date +%s)
     export AWS_ACCOUNT_EMAIL=${HASHI_USER}+hashidemos-${epoch}@hashicorp.com
-    export AWS_ACCOUNT_NAME=${HASHI_USER}-hashidemos-${epoch}
+    export AWS_ACCOUNT_NAME=${AWS_ACCOUNT_NAME}
     tfe pushvars -name ${TFE_ORG}/${WORKSPACE} \
     -var "aws_account_email=${AWS_ACCOUNT_EMAIL}" \
     -var "aws_account_name=${AWS_ACCOUNT_NAME}" \
@@ -29,7 +30,7 @@ function set_vars {
 }
 
 function main {
-    terraform workspace new aws_accounts || terraform workspace select aws_accounts 
+    terraform workspace new ${WORKSPACE} || terraform workspace select ${WORKSPACE} 
     terraform init
     terraform apply -var repo=${WORKSPACE} -var description="AWS Sub Accounts" -var private=true -auto-approve
     tfe workspace new -tfe-workspace ${WORKSPACE} -vcs-id HappyPathway/${WORKSPACE}
